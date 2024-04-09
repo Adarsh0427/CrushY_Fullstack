@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= title %>
+  </title>
+  <link href="/styles/style.css" rel="stylesheet">
+  <script src="/javascript/ejs.min.js"></script>
+  <script src="/javascript/student-dashboard.js"></script>
+</head>
+
+<body>
+  <div class="space-y-4 justify-evenly items-center bg-white dark:bg-gray-900">
+
+    <header class="flex px-2  text-sm py-2 text-blue-600 justify-between border-b-2 border-opacity-40 border-slate-400">
+
+      <div class="flex flex-row">
+        <div class="pt-[6px] w-16 text-center items-center ">
+          <button type="button"
+            class=" ring-2 p-2 inline-flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-white/10"
+            onclick="toggleSidebar()" aria-label="Toggle navigation">
+            <svg id="hs-open:hidden" class=" hidden flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
+              height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <line x1="3" x2="21" y1="6" y2="6" />
+              <line x1="3" x2="21" y1="12" y2="12" />
+              <line x1="3" x2="21" y1="18" y2="18" />
+            </svg>
+            <svg id="hs-open:block" class="  flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
+              height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div class=" ">
+          <a class="text-xl font-semibold " href="">
+            <div class="flex flex-row">
+              <div class="">
+                <svg class="size-[48px]" xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41"
+                  fill="none">
+                  <mask id="mask0_167_216" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="36"
+                    height="36">
+                    <path
+                      d="M18.5871 3.17527C19.481 2.71427 20.5428 2.71427 21.4367 3.17527L35.6589 10.5095C36.693 11.0428 37.3427 12.1089 37.3427 13.2724V27.358C37.3427 28.5215 36.693 29.5876 35.6589 30.1209L21.4367 37.4552C20.5428 37.9162 19.481 37.9162 18.5871 37.4552L4.36493 30.1209C3.33083 29.5876 2.68109 28.5215 2.68109 27.358V13.2724C2.68109 12.1089 3.33082 11.0428 4.36493 10.5095L18.5871 3.17527Z"
+                      fill="#D9D9D9" />
+                  </mask>
+                  <g mask="url(#mask0_167_216)">
+                    <path
+                      d="M20.6941 2.88365C20.143 2.60506 19.4922 2.60506 18.9411 2.88365L2.33145 11.2797L19.8176 20.1189L37.3037 11.2797L20.6941 2.88365Z"
+                      fill="#F9A682" />
+                    <path
+                      d="M2.33145 11.2797V28.0992C2.33145 28.857 2.77209 29.5457 3.46017 29.8633L19.8176 37.4128V20.1189L2.33145 11.2797Z"
+                      fill="#BAE3E2" />
+                    <path
+                      d="M19.8176 20.1189V37.4128L36.175 29.8633C36.8631 29.5457 37.3037 28.857 37.3037 28.0992V11.2797L19.8176 20.1189Z"
+                      fill="#30B3AB" />
+                  </g>
+                </svg>
+              </div>
+              <div class="relative w-[220px] group">
+                <div class="absolute left-2 top-1 ">
+                  <svg
+                    class="w-[100px] h-4  text-black dark:text-white  dark:group-hover:text-logo_2 font-poppins text-2xl font-extrabold overflow-auto"
+                    xmlns="http://www.w3.org/2000/svg" width="132" height="29" viewBox="0 0 132 29" fill="none"
+                    stroke="currentColor">
+                    <path
+                      d="M3.35939 24.9926C5.39885 16.0476 15.4879 7.44725 42.919 4.96048C64.0502 3.04484 79.2144 10.2942 65.7613 19.6078C62.538 21.8392 54.6368 23.1284 49.9801 23.1341C42.6136 23.1432 40.4534 21.0608 41.9882 17.9887C44.7763 12.4078 59.1506 4.57851 74.5251 3.17577C98.5851 0.980607 111.944 7.09855 115.906 14.7012C116.695 16.2156 116.842 28.7205 110.616 23.1168C109.486 22.0998 106.496 18.9416 107.833 19.8953C110.051 21.4765 111.072 22.4366 111.479 24.532C111.56 24.948 111.116 27.2904 113.598 26.0241C118.681 23.4314 124.107 20.9306 129.088 18.3102"
+                      stroke-width="4" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <div class=" absolute left-0 top-[12px] overflow-x-auto">
+                  <h1
+                    class="text-black dark:text-white dark:group-hover:bg-gradient-to-r dark:group-hover:from-logo_1 dark:group-hover:via-logo_2 dark:group-hover:to-logo_3 dark:group-hover:inline-block dark:group-hover:text-transparent dark:group-hover:bg-clip-text font-poppins text-2xl font-extrabold overflow-auto ">
+                    College CMS</h1>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <!--define avatar ( 'page',{user,user})-->
+        <%- include('student/dashboard/navbar/navbar'); %>
+      </div>
+    </header>
+
+  </div>
+  <div class="flex sticky h-screen w-full bg-white dark:bg-gray-900 ">
+    <div id="docs-sidebar"
+      class="w-sidebar-expand text-white overflow-auto border-r-2 border-opacity-40 border-slate-400">
+      <nav class=" p-1 pt-10 w-full flex flex-col flex-wrap">
+        <%- include('student/dashboard/sidebar/sidebar'); %>
+      </nav>
+    </div>
+    <div class="flex p-4 bg-gray-400 dark:bg-gray-700 w-full h-full">
+
+    </div>
+  </div>
+</body>
+
+</html>
