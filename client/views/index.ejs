@@ -86,20 +86,20 @@
       </div>
       <div class="flex items-center gap-4">
         <!--define avatar ( 'page',{user,user})-->
-        <%- include('student/dashboard/navbar/navbar'); %>
+        <%- include(role + '/dashboard/navbar_avatar/navbar'); %>
       </div>
     </header>
 
   </div>
   <div class="flex sticky h-screen w-full bg-white dark:bg-gray-900 ">
     <div id="docs-sidebar"
-      class="w-sidebar-expand text-white overflow-auto border-r-2 border-opacity-40 border-slate-400">
-      <nav class=" p-1 pt-10 w-full flex flex-col flex-wrap">
-        <%- include('student/dashboard/sidebar/sidebar'); %>
+      class="w-sidebar-expand text-white border-r-2 border-opacity-40 border-slate-400">
+      <nav class=" p-1 pt-10 w-full flex flex-col overflow-hidden flex-wrap">
+        <%- include(role + '/dashboard/sidebar/sidebar'); %>
       </nav>
     </div>
     <div class="flex p-4 bg-gray-400 dark:bg-gray-700 w-full h-full">
-
+      <%- include(role + '/dashboard/' + menu + '/page') %>
     </div>
   </div>
 </body>

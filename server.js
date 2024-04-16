@@ -23,8 +23,15 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "./client/public")));
 
 app.get("/student/dashboard", (req, res) => {
-  res.render("index", { title: "Student_Dashboard" });
+  const menu = req.query.menu;  
+  res.render("index", { title: "Student_Dashboard" , role: "student" , menu});
 });
+app.get("/admin/dashboard", (req, res) => {
+  const menu = req.query.menu;  
+  res.render("index", { title: "Student_Dashboard" , role: "admin" , menu});
+});
+
+
 
 app.listen(port, (req, res) => {
   console.log("Server running");

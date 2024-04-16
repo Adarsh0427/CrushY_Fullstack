@@ -3,7 +3,7 @@ import colors from "tailwindcss/colors";
 
 module.exports = {
   mode: "jit",
-  content: ["./client/views/**/*.ejs", "node_modules/preline/dist/*.js"],
+  content: ["./client/views/**/*.ejs","./client/views/admin/sidebar/*.ejs","node_modules/preline/dist/*.js"],
   theme: {
     extend: {
       fontFamily: {
