@@ -7,4 +7,6 @@ runme:
 Frontend UI Components Link:
     https://even-hydrant-9d5.notion.site/FSD-Documentation-03efb6ff7e684b7387a175262f843dad?pvs=4
 
-
+Student/dashboard/leave_application:
+    upload file and image logic is left
+    My leaves popup is left
