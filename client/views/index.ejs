@@ -9,8 +9,11 @@
   </title>
   
   <link href="/styles/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/std_att_style.css">
   <script src="/javascript/dashboard.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+ 
 </head>
 
 <body>
@@ -100,7 +103,7 @@
       </nav>
     </div>
     <div class="flex bg-gray-400 dark:bg-gray-700 w-full h-full">
-      <% data = {"applications_list" : applications_list}; %>
+      <% data = {"applications_list" : applications_list , "att_data":att_data}; %>
       <%- include(role + '/dashboard/' + menu + '/page', { data }) %>
     </div>
     </div>
