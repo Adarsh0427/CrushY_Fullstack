@@ -13,9 +13,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/preset-env": "^7.24.3",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.12",
     "autoprefixer": "^10.4.19",
+    "babel-cli": "^6.26.0",
     "daisyui": "^4.9.0",
     "ejs": "^3.1.9",
     "nodemon": "^3.1.0",
@@ -25,8 +27,11 @@
     "tailwindcss": "^3.4.3"
   },
   "dependencies": {
+    "dayjs": "^1.11.10",
     "dotenv": "^16.4.5",
     "express": "^4.19.1",
+    "flowbite": "^2.3.0",
+    "flowbite-datepicker": "^1.2.6",
     "postcss-cli": "^11.0.0"
   }
 }

@@ -1,0 +1,253 @@
+<div class=" top-0 right-0 w-full h-full bg-gray-200 dark:bg-gray-900 flex flex-row">
+  <div class="w-full h-full bg-blue-200 dark:bg-slate-900 flex flex-col">
+    <div class="basis-1/10 flex justify-between px-5 ">
+      <div class="py-2 ">
+        <h1 class="text-3xl text-center">Leave Application</h1>
+      </div>
+      <div class="py-3">
+        <button type="button"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          onclick="location.reload()">clear</button>
+      </div>
+    </div>
+    <div class="basis-9/10 w-full h-[85%] flex flex-row m-2">
+      <div id="root" class=" dark:border-gray-500 rounded-xl w-full">
+
+        <div class="flex  flex-row ">
+          <form class="w-1/4 ml-4">
+            <label for="leave_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Leave Type
+              <span class="text-red-500"></span></label>
+            <select id="leave_type"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option selected>Choose a leave type</option>
+              <option value="SL">Sick leave</option>
+              <option value="HA">Hackathon</option>
+              <option value="FE">Family emergency</option>
+              <option value="IN">Internship</option>
+              <option value="OT">Other</option>
+            </select>
+          </form>
+          <div date-rangepicker class="flex items-center mx-5 py-7">
+
+            <span class="px-1 text-gray-500">from</span>
+            <button class="relative">
+              <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z" />
+                </svg>
+
+              </div>
+              <input name="start" type="text" id="startdate"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="MM/DD/YYYY">
+            </button>
+            <span class="px-1 text-gray-500">to</span>
+            <button class="relative">
+              <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none ">
+                <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z" />
+                </svg>
+              </div>
+              <input name="end" type="text" id="enddate"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="MM/DD/YYYY">
+            </button>
+            <span class="px-1 text-gray-500">(both days inclusive)</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="mt-2">Days</div>
+            <button
+              class="border border-blue-600 w-16 h-9 rounded-lg ml-4 bg-gray-50 dark:bg-gray-700 text-center py-1 ">
+    
+
+              <span id="no_days"></span>
+            </button>
+          </div>
+        </div>
+        <div class="flex flex-row  ">
+          <div class="ml-5 flex flex-col  w-2/3">
+            <div class="flex flex-row justify-start">
+              <div class="flex flex-col w-1/3">
+                <div class=" my-2 ">
+                  <label for="Exams" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number of
+                    Exams
+                    left</label>
+                  <input type="number_exams" id="phone"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="0" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
+                </div>
+                <div class="my-3">
+                  <label for="Quizes" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number of
+                    Quizes left</label>
+                  <input type="number_quizes" id="email"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="0" required />
+                </div>
+              </div>
+              <div
+                class="ml-24 h-48 w-2/3 border border-sky-500 dark:border-gray-600 rounded-xl bg-blue-100 dark:bg-gray-700">
+                <label for="reason-for-leave" class="block m-2 text-lg font-medium text-gray-600 dark:text-white">Your
+                  request include</label>
+
+                <div class="border w-full mt-3 mb-2 bg-slate-400 h-1"></div>
+                <span class="flex flex-col ml-3">
+                  Total Available days :<div id="Total_Available_days">
+                    <%= 20 %>
+                  </div>
+                  remaining days: <div id="remaining_days"> </div>
+                </span>
+
+              </div>
+
+            </div>
+            <div
+              class="mt-4 w-full h-full  border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
+              <div class="p-2 bg-white rounded-t-lg dark:bg-gray-800 ">
+                <label for="reason-for-leave"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Reason
+                  for Leave</label>
+                <textarea id="reason-for-leave" rows="4"
+                  class="w-full h-[175px] px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400 resize-none"
+                  placeholder="Write your reason and also mention quizes or exams if left ..."></textarea>
+              </div>
+              <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
+
+                <div class="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2">
+                  <button type="button"
+                    class="inline-flex justify-center items-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600">
+                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                      viewBox="0 0 12 20">
+                      <path stroke="currentColor" stroke-linejoin="round" stroke-width="2"
+                        d="M1 6v8a5 5 0 1 0 10 0V4.5a3.5 3.5 0 1 0-7 0V13a2 2 0 0 0 4 0V6" />
+                    </svg>
+                    <span class="mx-1">Attach file</span>
+                  </button>
+                  <button type="button"
+                    class="inline-flex justify-center items-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600">
+                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                      viewBox="0 0 20 18">
+                      <path
+                        d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+                    </svg>
+                    <span class="mx-1">Upload image</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="flex mt-12 justify-end demo--ripple-animation-v1">
+              <button id="postCommentBtn"
+                class="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-blue-600 dark:text-orange-100 transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-300 dark:bg-gray-600 ring-2 group">
+                <span
+                  class="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-blue-600 group-hover:h-full"></span>
+                <span class="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
+                  <svg class="w-5 h-5 text-green-400  " fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                    </path>
+                  </svg>
+                </span>
+                <span class="absolute left-0 pl-2.5 -translate-x-12 group-hover:translate-x-0 ease-out duration-200">
+                  <svg class="w-5 h-5 text-green-400 " fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                    </path>
+                  </svg>
+                </span>
+                <span
+                  class="relative w-full text-left transition-colors duration-200 ease-in-out group-hover:text-white dark:group-hover:text-slate-200">Button
+                  Text</span>
+              </button>
+            </div>
+           
+          </div>
+
+          <div class="w-1/3 h-[300px]">
+            <div class="border ml-9 w-4/5 border-sky-500 m-1 rounded-xl">
+              <div class="flex flex-row m-4 items-center mb-6 text-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+                  <path
+                    d="M7.5 3.375c0-1.036.84-1.875 1.875-1.875h.375a3.75 3.75 0 0 1 3.75 3.75v1.875C13.5 8.161 14.34 9 15.375 9h1.875A3.75 3.75 0 0 1 21 12.75v3.375C21 17.16 20.16 18 19.125 18h-9.75A1.875 1.875 0 0 1 7.5 16.125V3.375Z" />
+                  <path
+                    d="M15 5.25a5.23 5.23 0 0 0-1.279-3.434 9.768 9.768 0 0 1 6.963 6.963A5.23 5.23 0 0 0 17.25 7.5h-1.875A.375.375 0 0 1 15 7.125V5.25ZM4.875 6H6v10.125A3.375 3.375 0 0 0 9.375 19.5H16.5v1.125c0 1.035-.84 1.875-1.875 1.875h-9.75A1.875 1.875 0 0 1 3 20.625V7.875C3 6.839 3.84 6 4.875 6Z" />
+                </svg>
+                <span class="ml-2 text-xl">My Leaves</span>
+
+              </div>
+              <div class="border w-full mb-5 bg-slate-400 h-1 items-center content-center "></div>
+              <!-- main leave for inbox -->
+              <!-- inbox for leaves -->
+              <div class=" flex flex-col overflow-scroll h-[60vh] items-center ">
+                <% for (let application of data["applications_list"] ) { %>
+                  <button
+                    class=" w-auto content-center items-center my-1 border-2 border-blue-400 dark:border-gray-700 p-2 rounded-xl">
+                    <span>
+                      <ul class="space-y-3"></ul>
+                      <li class="text-body-color dark:text-dark-6 flex text-base">
+                        <span class="text-primary mr-2.5 mt-0.5">
+                          <% if (application.status==1) { %>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="#758cfa"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <g clip-path="url(#clip0_980_24852)"></g>
+                              <path
+                                d="M10 0.5625C4.78125 0.5625 0.5625 4.78125 0.5625 10C0.5625 15.2188 4.78125 19.4688 10 19.4688C15.2188 19.4688 19.4688 15.2188 19.4688 10C19.4688 4.78125 15.2188 0.5625 10 0.5625ZM10 18.0625C5.5625 18.0625 1.96875 14.4375 1.96875 10C1.96875 5.5625 5.5625 1.96875 10 1.96875C14.4375 1.96875 18.0625 5.59375 18.0625 10.0312C18.0625 14.4375 14.4375 18.0625 10 18.0625Z"
+                                fill="#758cfa" />
+                              <path
+                                d="M12.6875 7.09375L8.96875 10.7188L7.28125 9.0625C7 8.78125 6.5625 8.8125 6.28125 9.0625C6 9.34375 6.03125 9.78125 6.28125 10.0625L8.28125 12C8.46875 12.1875 8.71875 12.2813 8.96875 12.2813C9.21875 12.2813 9.46875 12.1875 9.65625 12L13.6875 8.125C13.9688 7.84375 13.9688 7.40625 13.6875 7.125C13.4063 6.84375 12.9688 6.84375 12.6875 7.09375Z"
+                                fill="#758cfa" />
+                              <defs>
+                                <clipPath id="clip0_980_24852"></clipPath>
+                                <rect width="20" height="20" fill="white" />
+                              </defs>
+                            </svg>
+
+                            <% } else if (application.status==2) { %>
+
+                              <svg width="20" height="20" viewBox="0 0 20 20" fill="#f33637"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_980_24913)">
+                                  <path
+                                    d="M10 0.5625C4.78125 0.5625 0.5625 4.78125 0.5625 10C0.5625 15.2188 4.78125 19.4688 10 19.4688C15.2188 19.4688 19.4688 15.2188 19.4688 10C19.4688 4.78125 15.2188 0.5625 10 0.5625ZM10 18.0625C5.5625 18.0625 1.96875 14.4375 1.96875 10C1.96875 5.5625 5.5625 1.96875 10 1.96875C14.4375 1.96875 18.0625 5.59375 18.0625 10.0312C18.0625 14.4375 14.4375 18.0625 10 18.0625Z"
+                                    fill="#f33637" />
+                                  <path
+                                    d="M12.875 7.09375C12.5938 6.8125 12.1563 6.8125 11.875 7.09375L10 9L8.09375 7.09375C7.8125 6.8125 7.375 6.8125 7.09375 7.09375C6.8125 7.375 6.8125 7.8125 7.09375 8.09375L9 10L7.09375 11.9062C6.8125 12.1875 6.8125 12.625 7.09375 12.9062C7.21875 13.0312 7.40625 13.125 7.59375 13.125C7.78125 13.125 7.96875 13.0625 8.09375 12.9062L10 11L11.9062 12.9062C12.0312 13.0312 12.2188 13.125 12.4063 13.125C12.5938 13.125 12.7812 13.0625 12.9062 12.9062C13.1875 12.625 13.1875 12.1875 12.9062 11.9062L11 10L12.9062 8.09375C13.1562 7.8125 13.1563 7.375 12.875 7.09375Z"
+                                    fill="#f33637" />
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_980_24913">
+                                    <rect width="20" height="20" fill="white" />
+                                  </clipPath>
+                                </defs>
+                              </svg>
+                              <% } %>
+                        </span>
+                        Subject: <%= application.subject %>
+                      </li>
+                      <span class="text-sm ml-36 ">
+                        <%= application.date %>
+                      </span>
+                      </ul>
+                    </span>
+                  </button>
+                  <% } %>
+              </div>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="w-1/4 bg-green-200 dark:bg-gray-700">
+
+  </div>
+</div>
+</div>
+<script src="/javascript/std_leave_app.js"></script>

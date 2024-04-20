@@ -7,9 +7,10 @@
   <title>
     <%= title %>
   </title>
+  
   <link href="/styles/style.css" rel="stylesheet">
-  <script src="/javascript/ejs.min.js"></script>
-  <script src="/javascript/student-dashboard.js"></script>
+  <script src="/javascript/dashboard.js"></script>
+
 </head>
 
 <body>
@@ -98,8 +99,10 @@
         <%- include(role + '/dashboard/sidebar/sidebar'); %>
       </nav>
     </div>
-    <div class="flex p-4 bg-gray-400 dark:bg-gray-700 w-full h-full">
-      <%- include(role + '/dashboard/' + menu + '/page') %>
+    <div class="flex bg-gray-400 dark:bg-gray-700 w-full h-full">
+      <% data = {"applications_list" : applications_list}; %>
+      <%- include(role + '/dashboard/' + menu + '/page', { data }) %>
+    </div>
     </div>
   </div>
 </body>

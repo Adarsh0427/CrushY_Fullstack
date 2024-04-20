@@ -23,8 +23,27 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "./client/public")));
 
 app.get("/student/dashboard", (req, res) => {
-  const menu = req.query.menu;  
-  res.render("index", { title: "Student_Dashboard" , role: "student" , menu});
+  const menu = req.query.menu; 
+  console.log(menu);
+  const applications_list = [
+    { status: 1 ,date: "2022-01-01", subject: "Vacation" },
+    {status:2, date: "2022-02-15", subject: "Sick Leave" },
+    { status: 1 ,date: "2022-01-01", subject: "Vacation" },
+    {status:2, date: "2022-02-15", subject: "Sick Leave" },
+    { status: 1 ,date: "2022-01-01", subject: "Vacation" },
+    {status:2, date: "2022-02-15", subject: "Sick Leave" },
+    { status: 1 ,date: "2022-01-01", subject: "Vacation" },
+    {status:2, date: "2022-02-15", subject: "Sick Leave" },
+    { status: 1 ,date: "2022-01-01", subject: "Vacation" },
+    {status:2, date: "2022-02-15", subject: "Sick Leave" },
+    { status: 1 ,date: "2022-01-01", subject: "Vacation" },
+    {status:2, date: "2022-02-15", subject: "Sick Leave" },
+    { status: 1 ,date: "2022-01-01", subject: "Vacation" },
+    {status:2, date: "2022-02-15", subject: "Sick Leave" },
+    { status: 1 ,date: "2022-01-01", subject: "Vacation" },
+    {status:2, date: "2022-02-15", subject: "Sick Leave" }
+  ];
+  res.render("index", { title: "Student_Dashboard" , role: "student" , menu, applications_list});
 });
 app.get("/admin/dashboard", (req, res) => {
   const menu = req.query.menu;  
