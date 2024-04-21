@@ -184,7 +184,6 @@ smallDivs.forEach(div => {
         span.textContent = JSON.stringify(details, null, 2); 
     });
 });
-
 const att_data = {
   subject1: "ranac",
   attendance1: 10,
@@ -199,7 +198,7 @@ const att_data = {
   totalClasses3: 100,
 
   subject4: "DBMS",
-  attendance4: 30,
+  attendance4: 90,
   totalClasses4: 100,
 
   subject5: "PC",

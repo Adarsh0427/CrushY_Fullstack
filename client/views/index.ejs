@@ -105,8 +105,9 @@
       <% if (role == "student") { %>
         <% data = {"applications_list" : applications_list , "att_data":att_data}; %>
         <%- include(role + '/dashboard/' + menu + '/page', { data }) %>
+      <% } else { %>
+        <%- include(role + '/dashboard/' + menu + '/page') %>
       <% } %>
-      <%- include(role + '/dashboard/' + menu + '/page') %>
     </div>
     </div>
   </div>

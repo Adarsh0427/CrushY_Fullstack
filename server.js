@@ -24,7 +24,6 @@ app.use(express.static(path.join(__dirname, "./client/public")));
 
 app.get("/student/dashboard", (req, res) => {
   const menu = req.query.menu;
-  console.log(menu);
   const applications_list = [
     { status: 1, date: "2022-01-01", subject: "Vacation" },
     { status: 2, date: "2022-02-15", subject: "Sick Leave" },
@@ -57,7 +56,7 @@ app.get("/student/dashboard", (req, res) => {
     totalClasses3: 100,
 
     subject4: "DBMS",
-    attendance4: 30,
+    attendance4: 90,
     totalClasses4: 100,
 
     subject5: "PC",
