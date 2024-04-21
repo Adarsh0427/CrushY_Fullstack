@@ -1,0 +1,55 @@
+ 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  
+  <div class="top-16 left-4 main-div">
+    <div class="upper-section">
+      <div class="small-div small-div-1 bg-gray-600" id="div1">
+        <div class="subject subject-1" ><%= data["att_data"].subject1 %> :<%= data["att_data"].totalClasses1 %></div>
+        <svg id="chart1" class="ml-8"  viewBox="0 0 500 500"></svg>
+      </div>
+      <div class="small-div small-div-2" id="div2">
+        <div class="subject subject-2" ><%= data["att_data"].subject2 %></div>
+        <span class="item-center"><svg id="chart2" class="ml-8" viewBox="0 0 500 500"></svg></span>
+      </div>
+      <div class="small-div small-div-3" id="div3">
+        <div class="subject subject-3" ><%= data["att_data"].subject3 %></div>
+        <svg id="chart3" class="ml-8" viewBox="0 0 500 500"></svg>
+      </div>
+      <div class="small-div small-div-4" id="div4">
+        <div class="subject subject-4" ><%= data["att_data"].subject4 %></div>
+        <svg id="chart4" class="ml-8" viewBox="0 0 500 500"></svg>
+      </div>
+      <div class="small-div small-div-5" id="div5">
+        <div class="subject subject-5"  ><%= data["att_data"].subject5 %></div>
+        <svg id="chart5" class="ml-8"  viewBox="0 0 500 500"></svg>
+      </div>
+      <div class="small-div small-div-6" id="div6">
+        <div class="subject subject-6" ><%= data["att_data"].subject6 %></div>
+        <svg id="chart6" class="ml-8"  viewBox="0 0 500 500"></svg>
+      </div>
+    </div>
+    <div class="lower-section">
+      <div class="window">  
+        <div class="window_header">
+            <div class="window_title"></div>
+            <div class="window_close_button"></div>
+            <div class="window_maximize_button"></div>
+            <div class="window_minimize_button"></div>
+        </div>
+        <div class="window_content">
+            terminal window for deatils of the attendance data. <br>
+            <b>user@localhost:~$</b> <span class="blink">s</span><br> 
+        </div>
+    </div>
+
+      <div class="info-table" >
+        <canvas class="radar-chart" id="radar">
+        </canvas>
+      </div>
+    </div>
+  </div>
+
+<script src="/javascript/std_att.js"></script>
+
+

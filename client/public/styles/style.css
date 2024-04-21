@@ -2702,6 +2702,10 @@ details.collapse summary::-webkit-details-marker {
   left: 0.5rem;
 }
 
+.left-4 {
+  left: 1rem;
+}
+
 .right-0 {
   right: 0px;
 }
@@ -2716,6 +2720,10 @@ details.collapse summary::-webkit-details-marker {
 
 .top-1 {
   top: 0.25rem;
+}
+
+.top-16 {
+  top: 4rem;
 }
 
 .top-\[12px\] {
@@ -3357,6 +3365,11 @@ details.collapse summary::-webkit-details-marker {
 .bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
+.bg-gray-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(79 84 92 / var(--tw-bg-opacity));
 }
 
 .bg-gray-900 {
