@@ -30,6 +30,7 @@
     "dayjs": "^1.11.10",
     "dotenv": "^16.4.5",
     "express": "^4.19.1",
+    "flatpickr": "^4.6.13",
     "flowbite": "^2.3.0",
     "flowbite-datepicker": "^1.2.6",
     "postcss-cli": "^11.0.0"

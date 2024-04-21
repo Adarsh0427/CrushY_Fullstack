@@ -3,7 +3,7 @@ import colors from "tailwindcss/colors";
 
 module.exports = {
   mode: "jit",
-  content: ["./client/views/**/*.ejs","./client/views/admin/sidebar/*.ejs", "node_modules/preline/dist/*.js"],
+  content: ["./client/views/**/*.ejs","./client/views/admin/**/*.ejs","./client/views/faculty/**/*.ejs","./client/views/faculty/**/**/*.ejs"],
   theme: {
     extend: {
       fontFamily: {
@@ -30,7 +30,6 @@ module.exports = {
     require("@tailwindcss/typography"),
     require("@tailwindcss/forms"),
     require("daisyui"),
-    require("preline/plugin"),
     {
       tailwindcss: {},
       autoprefixer: {},
