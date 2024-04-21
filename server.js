@@ -78,8 +78,13 @@ app.get("/student/dashboard", (req, res) => {
 });
 app.get("/admin/dashboard", (req, res) => {
   const menu = req.query.menu;
-  res.render("index", { title: "Student_Dashboard", role: "admin", menu });
+  res.render("index", { title: "Admin_Dashboard", role: "admin", menu });
 });
+app.get("/faculty/dashboard", (req, res) => {
+  const menu = req.query.menu;
+  res.render("index", { title: "Faculty_Dashboard", role: "faculty", menu });
+});
+
 
 app.listen(port, (req, res) => {
   console.log("Server running");

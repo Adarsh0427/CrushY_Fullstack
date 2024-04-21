@@ -11,13 +11,12 @@
   <link href="/styles/style.css" rel="stylesheet">
   <link rel="stylesheet" href="/styles/std_att_style.css">
   <script src="/javascript/dashboard.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://d3js.org/d3.v7.min.js"></script>
+
  
 </head>
 
 <body>
-  <div class="space-y-4 justify-evenly items-center bg-white dark:bg-slate-900">
+  <div class="space-y-4 justify-evenly items-center bg-white dark:bg-gray-900">
 
     <header class="flex px-2  text-sm py-2 text-blue-600 justify-between border-b-2 border-opacity-40 border-slate-400">
 
@@ -103,8 +102,11 @@
       </nav>
     </div>
     <div class="flex bg-gray-400 dark:bg-gray-700 w-full h-full">
-      <% data = {"applications_list" : applications_list , "att_data":att_data}; %>
-      <%- include(role + '/dashboard/' + menu + '/page', { data }) %>
+      <% if (role == "student") { %>
+        <% data = {"applications_list" : applications_list , "att_data":att_data}; %>
+        <%- include(role + '/dashboard/' + menu + '/page', { data }) %>
+      <% } %>
+      <%- include(role + '/dashboard/' + menu + '/page') %>
     </div>
     </div>
   </div>
