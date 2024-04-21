@@ -3044,10 +3044,6 @@ details.collapse summary::-webkit-details-marker {
   width: calc(100% - 2rem);
 }
 
-.w-auto {
-  width: auto;
-}
-
 .w-fit {
   width: -moz-fit-content;
   width: fit-content;
@@ -3055,6 +3051,22 @@ details.collapse summary::-webkit-details-marker {
 
 .w-full {
   width: 100%;
+}
+
+.w-3\/4 {
+  width: 75%;
+}
+
+.w-\[\] {
+  width: ;
+}
+
+.w-\[80\%\] {
+  width: 80%;
+}
+
+.w-\[\%\] {
+  width: %;
 }
 
 .w-\[90\%\] {
