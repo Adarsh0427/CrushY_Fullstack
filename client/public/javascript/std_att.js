@@ -186,7 +186,7 @@ smallDivs.forEach(div => {
 });
 const att_data = {
   subject1: "ranac",
-  attendance1: 10,
+  attendance1: 30,
   totalClasses1: 100,
 
   subject2: "OS",

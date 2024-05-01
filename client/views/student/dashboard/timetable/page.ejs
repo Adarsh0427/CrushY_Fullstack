@@ -1,7 +1,119 @@
-
-<% const table = [1,3,45,6,34,56,3456,345,64,356] %>
-<div class="flex flex-wrap justify-evenly">
-    <% for (let i = 0; i < table.length; i++) { %>
-        <div class="m-5 w-1/4 h-[200px] border border-black ">hgjhgjgvhjv <%= table[i] %></div>
-    <% } %>
+<div class="flex-col w-full">
+    <div class="mx-2 py-2 px-4 text-xl border border-black  "> TIME TABLE</div>
+    <div class="flex flex-wrap justify-evenly">
+    </div>
 </div>
+
+<script> 
+const timetableData = {
+  "data": [
+    {
+      "date": "2024-05-01", 
+    //   "dayOfWeek": "Wednesday",  taken care in backend (day -> date)
+      "timeSlots": [
+        {
+          "time": "9:00 AM - 10:00 AM",
+          "course": "Math",
+          "classroom": "Room 205",
+          "details": "Calculus Review"
+        }, 
+        {
+          "time": "11:00 AM - 12:00 AM",
+          "course": "Science",
+          "classroom": "Room G09",
+          "details": "Experiment" 
+        }
+      ]
+    },
+    {
+      "date": "2024-05-02",
+      "timeSlots": [ 
+        {
+          "time": "10:00 AM - 11:00 AM",
+          "course": "Science",
+          "classroom": "Room G09",
+          "details": "Experiment"   
+        }
+      ]
+    },
+    {
+      "date": "2024-05-03",
+      "timeSlots": [ 
+        {
+          "time": "10:00 AM - 11:00 AM",
+          "course": "Science",
+          "classroom": "Room G09",
+          "details": "Experiment"   
+        }
+      ]
+    },
+    // Data for other days 
+  ]
+}; 
+
+function fillDivsWithWeekdays() {
+  const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const today = new Date();
+  let currentDay = today.getDay();
+  let mondayDate = today.getDate() - currentDay + (currentDay === 0 ? 7 : 1); 
+
+  const divContainer = document.querySelector(".flex.flex-wrap.justify-evenly");
+
+  for (let i = 0; i < daysOfWeek.length; i++) {
+    //  take day in backend and convert it into date
+    const foundData = timetableData.data.find(data => data.date === formatDate(new Date(today.getFullYear(), today.getMonth(), mondayDate + i)));
+
+    const mainDiv = document.createElement('div');
+    mainDiv.classList.add("mt-2","w-[465px]", "h-[350px]", "border", "border-black", "rounded-md", "shadow", "p-4"); 
+    mainDiv.id = `day-div-${i + 1}`; 
+
+    const dateDiv = document.createElement('div');
+    dateDiv.classList.add("date-div", "border-b", "border-gray-300", "px-3", "text-lg", "font-bold", "mb-2");
+
+    const courseDetailsContainer = document.createElement('div');
+    courseDetailsContainer.classList.add("course-details-container", "grid", "grid-cols-4", "gap-3");
+
+    if (foundData) { // Check if data exists for the current date
+      for (const timeSlot of foundData.timeSlots) {
+        const timeColumn = document.createElement('div');
+        timeColumn.classList.add("time-column", "border-r", "border-gray-300", "p-2");
+        timeColumn.textContent = timeSlot.time;
+
+        const courseColumn = document.createElement('div');
+        courseColumn.classList.add("course-column", "border-r", "border-gray-300", "p-2");
+        courseColumn.textContent = timeSlot.course;
+
+        const classroomColumn = document.createElement('div');
+        classroomColumn.classList.add("classroom-column", "border-r", "border-gray-300", "p-2");
+        classroomColumn.textContent = timeSlot.classroom;
+
+        const detailsColumn = document.createElement('div');
+        detailsColumn.classList.add("details-column", "p-2");
+        detailsColumn.textContent = timeSlot.details;
+
+        courseDetailsContainer.appendChild(timeColumn);
+        courseDetailsContainer.appendChild(courseColumn);
+        courseDetailsContainer.appendChild(classroomColumn);
+        courseDetailsContainer.appendChild(detailsColumn);
+      }
+    } 
+
+    const currentDate = new Date(today.getFullYear(), today.getMonth(), mondayDate + i);
+    dateDiv.textContent = daysOfWeek[i] + ", " + currentDate.toLocaleDateString();
+
+    mainDiv.appendChild(dateDiv); 
+    mainDiv.appendChild(courseDetailsContainer); 
+    divContainer.appendChild(mainDiv);
+  }
+}
+
+// Helper function (modify if your date format is different)
+function formatDate(date) {
+  const year = date.getFullYear();
+  const month = ('0' + (date.getMonth() + 1)).slice(-2); 
+  const day = ('0' + date.getDate()).slice(-2);
+  return `${year}-${month}-${day}`;
+} 
+
+fillDivsWithWeekdays();
+</script>
