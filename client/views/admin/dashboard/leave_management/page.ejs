@@ -1,9 +1,11 @@
-<div class="flex h-screen bg-gray-100 dark:bg-gray-700">
-    <main class="flex-1">
+<div class="flex h-auto overflow-scroll w-full bg-gray-100 dark:bg-gray-700 pb-8">
+    <main class="flex-1 overflow-hidden">
         <header class="flex items-center justify-between p-4 bg-white shadow">
             <h1 class="text-xl font-semibold">Leave Requests</h1>
+            <div class="leave-request-count text-gray-500">Leave Requests (<span id="unread-count" class="unread-count">0</span>)</div>
         </header>
-        <div class="p-4">
+        
+        <div class="p-4 h-full overflow-auto">
             <div class="relative w-full overflow-auto">
                 <table class="w-full caption-bottom text-sm">
                     <thead>
@@ -25,330 +27,334 @@
                             </th>
                             <th class="h-12 px-4 text-left align-middle font-medium">
                                 Amount
-                            </th>
+                            </th>   
                             <th class="h-12 px-4 text-left align-middle font-medium"></th>
                         </tr>
                     </thead>
-                    <tbody class="[&amp;_tr:last-child]:border-0">
-                        <tr class="hover:bg-muted/50 data-[state=selected]:bg-muted" data-approve-target="request1">
-                            <td class="p-4 align-middle">
-                                Bessie Cooper
-                            </td>
-                            <td class="p-4 align-middle">Sick Leave</td>
-                            <td class="p-4 align-middle">
-                                S0203010230
-                            </td>
-                            <td class="p-4 align-middle">
-                                Mar 20, 2024 23:13
-                            </td>
-                            <td class="p-4 align-middle">
-                                Mar 22, 2024 23:13
-                            </td>
-                            <td class="p-4 align-middle">2 Days</td>
-                            <td class="p-4 align-middle">
-                                <a id="open-modal"
-                                    class="inline-block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
-                                    href="#" data-modal-target="modal1">Show Details</a>
-                                <button
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold mx-2 py-2 px-4 border border-blue-700 rounded">
-                                    Approve
-                                </button>
-                            </td>
-                        </tr>
-                        <tr class="border-b hover:bg-muted/50 data-[state=selected]:bg-muted"
-                            data-approve-target="request2">
-                            <td class="p-4 align-middle">Devon Lane</td>
-                            <td class="p-4 align-middle">
-                                Academic Leave
-                            </td>
-                            <td class="p-4 align-middle">
-                                S0205001023
-                            </td>
-                            <td class="p-4 align-middle">
-                                Mar 20, 2024 23:13
-                            </td>
-                            <td class="p-4 align-middle">
-                                Mar 22, 2024 23:13
-                            </td>
-                            <td class="p-4 align-middle">2 Days</td>
-                            <td class="p-4 align-middle">
-                                <a class="inline-block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
-                                    href="#" data-modal-target="modal2">Show Details</a>
-                                <button
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold mx-2 py-2 px-4 border border-blue-700 rounded">
-                                    Approve
-                                </button>
-                            </td>
-                        </tr>
-                        <tr class="border-b hover:bg-muted/50 data-[state=selected]:bg-muted"
-                            data-approve-target="request3">
-                            <td class="p-4 align-middle">
-                                Suvan Sarkar
-                            </td>
-                            <td class="p-4 align-middle">Sick Leave</td>
-                            <td class="p-4 align-middle">
-                                S20203030153
-                            </td>
-                            <td class="p-4 align-middle">
-                                Mar 20, 2024 23:13
-                            </td>
-                            <td class="p-4 align-middle">
-                                Mar 22, 2024 23:13
-                            </td>
-                            <td class="p-4 align-middle">2 Days</td>
-                            <td class="p-4 align-middle">
-                                <a class="inline-block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
-                                    href="#" data-modal-target="modal3">Show Details</a>
-                                <button
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold mx-2 py-2 px-4 border border-blue-700 rounded">
-                                    Approve
-                                </button>
-                            </td>
-                        </tr>
-                        <tr class="border-b hover:bg-muted/50 data-[state=selected]:bg-muted"
-                            data-approve-target="request4">
-                            <td class="p-4 align-middle">Robert Fox</td>
-                            <td class="p-4 align-middle">
-                                Internship Leave
-                            </td>
-                            <td class="p-4 align-middle">
-                                S0203010993
-                            </td>
-                            <td class="p-4 align-middle">
-                                Mar 20, 2024 23:13
-                            </td>
-                            <td class="p-4 align-middle">
-                                Mar 22, 2024 23:13
-                            </td>
-                            <td class="p-4 align-middle">2 Days</td>
-                            <td class="p-4 align-middle">
-                                <a class="inline-block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
-                                    href="#" data-modal-target="modal4">Show Details</a>
-                                <button
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold mx-2 py-2 px-4 border border-blue-700 rounded">
-                                    Approve
-                                </button>
-                            </td>
-                        </tr>
+                    <tbody id="inbox-table-body" class="[&amp;_tr:last-child]:border-0 ">
+                        <!-- Table body will be dynamically populated here -->
                     </tbody>
                 </table>
             </div>
         </div>
     </main>
 </div>
+
+<!-- Modal -->
 <div id="modal-bg" class="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-40 hidden"></div>
+<div id="modal" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded shadow-lg z-50 hidden">
+    <h2 class="text-xl font-semibold mb-4">Application Details</h2>
+    <div id="modal-content"></div>
+    <button id="close-modal" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Close</button>
+</div>
 
-<!-- Modal Container -->
-<div id="modal1"
-    class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded-lg p-8 max-w-lg z-50 hidden h-30vh overflow-y-auto modal">
-    <!-- Modal Header -->
-    <div class="mb-4">
-        <h2 class="text-xl font-bold">Leave Details</h2>
-        <p class="text-gray-500">From March 20 to March 22</p>
-    </div>
-    <!-- Modal Content -->
-    <div>
-        <h3 class="font-bold mb-2">Reason 1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <h3 class="font-bold mt-4 mb-2">Number of Days Leave</h3>
-        <p>5 days</p>
-        <h3 class="font-bold mt-4 mb-2">Number of Quizzes Missed</h3>
-        <p>2 quizzes</p>
-        <h3 class="font-bold mt-4 mb-2">Number of Classes Attended</h3>
-        <p>10 classes</p>
-    </div>
-    <!-- Modal Buttons -->
-    <div class="mt-6 flex justify-end">
-        <button id="decline-btn" class="mr-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
-            Decline
-        </button>
-        <button id="approve-btn" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
-            Approve
-        </button>
-    </div>
-</div>
-<!-- Modal Container -->
-<div id="modal2"
-    class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded-lg p-8 max-w-lg z-50 hidden h-30vh overflow-y-auto modal">
-    <!-- Modal Header -->
-    <div class="mb-4">
-        <h2 class="text-xl font-bold">Leave Details</h2>
-        <p class="text-gray-500">From March 20 to March 22</p>
-    </div>
-    <!-- Modal Content -->
-    <div>
-        <h3 class="font-bold mb-2">Reason 2</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <h3 class="font-bold mt-4 mb-2">Number of Days Leave</h3>
-        <p>5 days</p>
-        <h3 class="font-bold mt-4 mb-2">Number of Quizzes Missed</h3>
-        <p>2 quizzes</p>
-        <h3 class="font-bold mt-4 mb-2">Number of Classes Attended</h3>
-        <p>10 classes</p>
-    </div>
-    <!-- Modal Buttons -->
-    <div class="mt-6 flex justify-end">
-        <button id="decline-btn" class="mr-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
-            Decline
-        </button>
-        <button id="approve-btn" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
-            Approve
-        </button>
-    </div>
-</div>
-<!-- Modal Container -->
-<div id="modal3"
-    class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded-lg p-8 max-w-lg z-50 hidden h-30vh overflow-y-auto modal">
-    <!-- Modal Header -->
-    <div class="mb-4">
-        <h2 class="text-xl font-bold">Leave Details</h2>
-        <p class="text-gray-500">From March 20 to March 22</p>
-    </div>
-    <!-- Modal Content -->
-    <div>
-        <h3 class="font-bold mb-2">Reason 3</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <h3 class="font-bold mt-4 mb-2">Number of Days Leave</h3>
-        <p>5 days</p>
-        <h3 class="font-bold mt-4 mb-2">Number of Quizzes Missed</h3>
-        <p>2 quizzes</p>
-        <h3 class="font-bold mt-4 mb-2">Number of Classes Attended</h3>
-        <p>10 classes</p>
-    </div>
-    <!-- Modal Buttons -->
-    <div class="mt-6 flex justify-end">
-        <button id="decline-btn" class="mr-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
-            Decline
-        </button>
-        <button id="approve-btn" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
-            Approve
-        </button>
-    </div>
-</div>
-<!-- Modal Container -->
-<div id="modal4"
-    class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded-lg p-8 max-w-lg z-50 hidden h-30vh overflow-y-auto modal">
-    <!-- Modal Header -->
-    <div class="mb-4">
-        <h2 class="text-xl font-bold">Leave Details</h2>
-        <p class="text-gray-500">From March 20 to March 22</p>
-    </div>
-    <!-- Modal Content -->
-    <div>
-        <h3 class="font-bold mb-2">Reason 4</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <h3 class="font-bold mt-4 mb-2">Number of Days Leave</h3>
-        <p>5 days</p>
-        <h3 class="font-bold mt-4 mb-2">Number of Quizzes Missed</h3>
-        <p>2 quizzes</p>
-        <h3 class="font-bold mt-4 mb-2">Number of Classes Attended</h3>
-        <p>10 classes</p>
-    </div>
-    <!-- Modal Buttons -->
-    <div class="mt-6 flex justify-end">
-        <button id="decline-btn" class="mr-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
-            Decline
-        </button>
-        <button id="approve-btn" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
-            Approve
-        </button>
-    </div>
-</div>
 <script>
-    // Function to delete row and show message for approval
-    function deleteRowAndShowMessage(row, messageText) {
-        row.style.backgroundColor = "#d1f5e5"; // Highlight the row
-        setTimeout(function () {
-            row.style.backgroundColor = ""; // Remove the highlight after 4 seconds
-            row.remove(); // Delete the row
-        }, 2000); // Increased to 2 seconds to accommodate the message display
-        var message = document.createElement("div");
-        message.textContent = messageText;
-        message.style.position = "absolute";
-        message.style.top = "50%";
-        message.style.left = "50%";
-        message.style.transform = "translate(-50%, -50%)";
-        message.style.backgroundColor = "#4CAF50";
-        message.style.color = "white";
-        message.style.padding = "16px";
-        message.style.borderRadius = "5px";
-        message.style.zIndex = "1000"; // Ensure message is on top of everything
-        document.body.appendChild(message);
-        setTimeout(function () {
-            message.remove(); // Remove the message after 4 seconds
-        }, 2000);
+    // code  for dynamically generating the inbox table for admin based on the data
+    const inboxData = [
+        {
+            "studentName": "Bessie Cooper",
+            "leaveType": "Sick Leave",
+            "rollNumber": "S0203010230",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request1"
+        },
+        {
+            "studentName": "Devon Lane",
+            "leaveType": "Academic Leave",
+            "rollNumber": "S0205001023",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request2"
+        },
+        {
+            "studentName": "Suvan Sarkar",
+            "leaveType": "Sick Leave",
+            "rollNumber": "S20203030153",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request3"
+        },
+        {
+            "studentName": "Bessie Cooper",
+            "leaveType": "Sick Leave",
+            "rollNumber": "S0203010230",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request1"
+        },
+        {
+            "studentName": "Devon Lane",
+            "leaveType": "Academic Leave",
+            "rollNumber": "S0205001023",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request2"
+        },
+        {
+            "studentName": "Suvan Sarkar",
+            "leaveType": "Sick Leave",
+            "rollNumber": "S20203030153",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request3"
+        },
+        {
+            "studentName": "Bessie Cooper",
+            "leaveType": "Sick Leave",
+            "rollNumber": "S0203010230",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request1"
+        },
+        {
+            "studentName": "Devon Lane",
+            "leaveType": "Academic Leave",
+            "rollNumber": "S0205001023",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request2"
+        },
+        {
+            "studentName": "Suvan Sarkar",
+            "leaveType": "Sick Leave",
+            "rollNumber": "S20203030153",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request3"
+        },
+        {
+            "studentName": "Bessie Cooper",
+            "leaveType": "Sick Leave",
+            "rollNumber": "S0203010230",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request1"
+        },
+        {
+            "studentName": "Devon Lane",
+            "leaveType": "Academic Leave",
+            "rollNumber": "S0205001023",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request2"
+        },
+        {
+            "studentName": "Suvan Sarkar",
+            "leaveType": "Sick Leave",
+            "rollNumber": "S20203030153",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request3"
+        },
+        {
+            "studentName": "Bessie Cooper",
+            "leaveType": "Sick Leave",
+            "rollNumber": "S0203010230",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request1"
+        },
+        {
+            "studentName": "Devon Lane",
+            "leaveType": "Academic Leave",
+            "rollNumber": "S0205001023",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request2"
+        },
+        {
+            "studentName": "Suvan Sarkar",
+            "leaveType": "Sick Leave",
+            "rollNumber": "S20203030153",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request3"
+        },
+        {
+            "studentName": "Bessie Cooper",
+            "leaveType": "Sick Leave",
+            "rollNumber": "S0203010230",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request1"
+        },
+        {
+            "studentName": "Devon Lane",
+            "leaveType": "Academic Leave",
+            "rollNumber": "S0205001023",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request2"
+        },
+        {
+            "studentName": "Suvan Sarkar",
+            "leaveType": "Sick Leave",
+            "rollNumber": "S20203030153",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request3"
+        },
+        {
+            "studentName": "Bessie Cooper",
+            "leaveType": "Sick Leave",
+            "rollNumber": "S0203010230",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request1"
+        },
+        {
+            "studentName": "Devon Lane",
+            "leaveType": "Academic Leave",
+            "rollNumber": "S0205001023",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request2"
+        },
+        {
+            "studentName": "Suvan Sarkar",
+            "leaveType": "Sick Leave",
+            "rollNumber": "S20203030153",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request3"
+        },
+        {
+            "studentName": "Bessie Cooper",
+            "leaveType": "Sick Leave",
+            "rollNumber": "S0203010230",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request1"
+        },
+        {
+            "studentName": "Devon Lane",
+            "leaveType": "Academic Leave",
+            "rollNumber": "S0205001023",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request2"
+        },
+        {
+            "studentName": "Suvan Sarkar",
+            "leaveType": "Sick Leave",
+            "rollNumber": "S20203030153",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request3"
+        },
+        {
+            "studentName": "Robert Fox",
+            "leaveType": "Internship Leave",
+            "rollNumber": "S0203010993",
+            "from": "Mar 20, 2024 23:13",
+            "to": "Mar 22, 2024 23:13",
+            "amount": "2 Days",
+            "id": "request4"
+        }
+        
+    ];
+
+    // Update the unread count dynamically
+    document.getElementById('unread-count').textContent = inboxData.length;
+
+
+    // Get reference to table body
+    const tableBody = document.getElementById('inbox-table-body');
+
+    // Iterate over the data and populate the table rows
+    inboxData.forEach(item => {
+        const row = document.createElement('tr');
+        row.classList.add('border-b', 'hover:bg-muted/50', 'data-[state=selected]:bg-muted');
+        row.setAttribute('data-approve-target', item.id); // Assuming you have an ID for each item
+
+        // Populate table cells
+        row.innerHTML = `
+            <td class="p-4 align-middle">${item.studentName}</td>
+            <td class="p-4 align-middle">${item.leaveType}</td>
+            <td class="p-4 align-middle">${item.rollNumber}</td>
+            <td class="p-4 align-middle">${item.from}</td>
+            <td class="p-4 align-middle">${item.to}</td>
+            <td class="p-4 align-middle">${item.amount}</td>
+            <td class="p-4 align-middle">
+                <a class="inline-block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" href="#" data-modal-target="modal${item.id}">Show Details</a>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold ml-4 py-2 px-4 border border-blue-700 rounded">Approve</button>
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold ml-4 py-2 px-4 border border-red-700 rounded">Reject</button>
+</td>
+            </td>
+        `;
+        tableBody.appendChild(row);
+    });
+
+
+    // Get reference to modal elements
+    const modalBg = document.getElementById('modal-bg');
+    const modal = document.getElementById('modal');
+    const modalContent = document.getElementById('modal-content');
+    const closeModal = document.getElementById('close-modal');
+
+    // Show modal function
+    function showModal(content) {
+        modalContent.innerHTML = content;
+        modalBg.classList.remove('hidden');
+        modal.classList.remove('hidden');
     }
 
-    function openModal(modalId) {
-        var modalBg = document.getElementById("modal-bg");
-        var modal = document.getElementById(modalId);
-        modalBg.classList.remove("hidden");
-        modal.classList.remove("hidden");
-        document.body.style.overflow = "hidden"; // Prevent scrolling on background
-
-        // Event listener for declining
-        modal
-            .querySelectorAll(".decline-btn")
-            .forEach(function (button) {
-                console.log("Decline button found inside modal.");
-                button.addEventListener("click", function () {
-                    var row = this.closest("tr");
-                    row.remove();
-                    console.log("Deleted as declined");
-                    closeModal(); // Close modal if open
-                });
-            });
-
-        // Event listener for approving inside the modal
-        modal
-            .querySelectorAll(".approve-btn-modal")
-            .forEach(function (button) {
-                console.log("Approve button found inside modal.");
-                button.addEventListener("click", function () {
-                    var row = this.closest("tr");
-                    deleteRowAndShowMessage(row, "Request approved");
-                    console.log("Deleted as approved");
-                    closeModal(); // Close modal if open
-                });
-            });
+    // Hide modal function
+    function hideModal() {
+        modalBg.classList.add('hidden');
+        modal.classList.add('hidden');
     }
 
-    // Function to close modal
-    function closeModal() {
-        var modals = document.querySelectorAll(".modal");
-        var modalBg = document.getElementById("modal-bg");
-        modalBg.classList.add("hidden");
-        modals.forEach(function (modal) {
-            modal.classList.add("hidden");
-        });
-        document.body.style.overflow = ""; // Re-enable scrolling
-    }
+// Add event listener to each Show Details button
+const showDetailsButtons = document.querySelectorAll('[data-modal-target^="modal"]');
+showDetailsButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent default anchor tag behavior
+        const targetModalId = event.target.getAttribute('data-modal-target');
+        const id = targetModalId.replace('modal', ''); // Extract the ID from the modal target
+        const item = inboxData.find(item => item.id === id);
+        const detailsHtml = `
+            <p><strong>Student Name:</strong> ${item.studentName}</p>
+            <p><strong>Leave Type:</strong> ${item.leaveType}</p>
+            <p><strong>Roll Number:</strong> ${item.rollNumber}</p>
+            <p><strong>From:</strong> ${item.from}</p>
+            <p><strong>To:</strong> ${item.to}</p>
+            <p><strong>Amount:</strong> ${item.amount}</p>
+        `;
+        showModal(detailsHtml);
+    });
+});
 
-    // Event listener for opening modal when link is clicked
-    document
-        .querySelectorAll("[data-modal-target]")
-        .forEach(function (element) {
-            element.addEventListener("click", function (event) {
-                event.preventDefault(); // Prevent default link behavior
-                event.stopPropagation(); // Stop event propagation
-                var modalId = this.getAttribute("data-modal-target");
-                openModal(modalId);
-            });
-        });
 
-    // Event listener for closing modal when clicking outside modal
-    document
-        .getElementById("modal-bg")
-        .addEventListener("click", closeModal);
+    // Close modal when close button is clicked
+    closeModal.addEventListener('click', hideModal);
 
-    // Event listener for approving by clicking on the button beside "Show Details"
-    document
-        .querySelectorAll("[data-approve-target]")
-        .forEach(function (element) {
-            element.addEventListener("click", function () {
-                var row = this.closest("tr");
-                deleteRowAndShowMessage(row, "Request approved");
-                console.log("Deleted as approved");
-            });
-        });
+    // Close modal when background is clicked
+    modalBg.addEventListener('click', hideModal);
+
 </script>
