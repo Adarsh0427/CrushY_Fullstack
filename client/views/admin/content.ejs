@@ -1,0 +1,24 @@
+<div class=" w-full h-full hidden opacity-100 transition-opacity duration-150 ease-linear data-[twe-tab-active]:block"
+    id="tabs-root" role="tabpanel" aria-labelledby="tabs-overview-tab" data-twe-tab-active>
+    <%- include('dashboard/root/page' , { data }) %>
+</div>
+<div class=" w-full h-full hidden opacity-0 transition-opacity duration-150 ease-linear data-[twe-tab-active]:block"
+    id="tabs-time_table" role="tabpanel" aria-labelledby="tabs-profile-tab01">
+    <%- include('dashboard/timetable/page' , { data }) %>
+</div>
+<div class=" w-full h-full hidden opacity-0 transition-opacity duration-150 ease-linear data-[twe-tab-active]:block"
+    id="tabs-attendance" role="tabpanel" aria-labelledby="tabs-profile-tab01">
+    <%- include('dashboard/attendance/page' , { data }) %>
+</div>
+<div class=" w-full h-full hidden opacity-0 transition-opacity duration-150 ease-linear data-[twe-tab-active]:block"
+    id="tabs-document" role="tabpanel" aria-labelledby="tabs-profile-tab01">
+    <%- include('dashboard/document/page' , { data }) %>
+</div>
+<div class=" w-full h-full hidden opacity-0 transition-opacity duration-150 ease-linear data-[twe-tab-active]:block"
+    id="tabs-inbox" role="tabpanel" aria-labelledby="tabs-profile-tab01">
+    <%- include('dashboard/inbox/page' , { data }) %>
+</div>
+<div class=" w-full h-full hidden opacity-0 transition-opacity duration-150 ease-linear data-[twe-tab-active]:block"
+    id="tabs-leave_manage" role="tabpanel" aria-labelledby="tabs-profile-tab01">
+    <%- include('dashboard/leave_management/page' , { data }) %>
+</div>

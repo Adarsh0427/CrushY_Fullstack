@@ -11,7 +11,7 @@ const __filename = fileURLToPath(import.meta.url); // get the resolved path to t
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const port = 3000;
+const port = 4001;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 console.log(__dirname);
@@ -23,7 +23,6 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "./client/public")));
 
 app.get("/student/dashboard", (req, res) => {
-  const menu = req.query.menu;
   const applications_list = [
     { status: 1, date: "2022-01-01", subject: "Vacation" },
     { status: 2, date: "2022-02-15", subject: "Sick Leave" },
@@ -67,24 +66,23 @@ app.get("/student/dashboard", (req, res) => {
     attendance6: 90,
     totalClasses6: 100,
   };
-  res.render("index", {
+  res.render("student/test", {
     title: "Student_Dashboard",
     role: "student",
-    menu,
     applications_list,
     att_data,
   });
 });
 app.get("/admin/dashboard", (req, res) => {
-  const menu = req.query.menu;
-  res.render("index", { title: "Admin_Dashboard", role: "admin", menu });
+  const data =[1];
+  res.render("admin/test", { title: "Admin_Dashboard", data });
 });
 app.get("/faculty/dashboard", (req, res) => {
-  const menu = req.query.menu;
-  res.render("index", { title: "Faculty_Dashboard", role: "faculty", menu });
+  const data =[1];
+  res.render("faculty/test", { title: "Faculty_Dashboard" , data});
 });
 
 
 app.listen(port, (req, res) => {
-  console.log("Server running");
+  console.log("Server running. \n" + port);
 });

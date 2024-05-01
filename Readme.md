@@ -10,3 +10,5 @@ Frontend UI Components Link:
 Student/dashboard/leave_application:
     upload file and image logic is left
     My leaves popup is left
+student/dashboard/sem_score
+    individual course wise marks (mid-term, assignment , ..)
