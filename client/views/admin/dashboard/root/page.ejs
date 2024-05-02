@@ -3,7 +3,8 @@
     <div>
     <ul
       class="mb-5 flex list-none flex-row flex-wrap border-b-0 ps-0"
-      role="tablist"
+      id="tablist_root01"
+      role="tablist_root"
       data-twe-nav-ref>
       <li  class="flex-auto text-center">
         <a
@@ -25,7 +26,7 @@
           role="tab"
           aria-controls="tabs-profile01"
           aria-selected="false"
-          >Attendance Analysis</a
+          >Faculty Sheet</a
         >
       </li>
       <li  class="flex-auto text-center">
@@ -64,14 +65,14 @@
         role="tabpanel"
         aria-labelledby="tabs-home-tab01"
         data-twe-tab-active>
-        <%- include('sheet') %>
+        <%- include('std_sheet') %>
       </div>
       <div
         class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[twe-tab-active]:block"
         id="tabs-profile01"
         role="tabpanel"
         aria-labelledby="tabs-profile-tab01">
-        Tab 2 content
+        <%- include('fac_sheet') %>
       </div>
       <div
         class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[twe-tab-active]:block"
@@ -91,3 +92,8 @@
     </div>
     </div>
     
+<script>
+    
+
+        
+</script>

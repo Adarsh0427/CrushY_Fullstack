@@ -1,0 +1,268 @@
+
+<div class="flex flex-col gap-8 p-6 md:p-8">
+    <div class="flex flex-col gap-4 md:flex-row md:items-center">
+        <div class="flex flex-col gap-2">
+            <h1 class="text-2xl font-bold">Student Management</h1>
+            <p class="text-gray-500 dark:text-gray-400">Manage and view students details.</p>
+        </div>
+        <div class="flex flex-col gap-2 md:ml-auto md:flex-row md:items-center">
+            <div class="flex items-center gap-2">
+                <label for="roll-number" class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Roll Number
+                </label>
+                <input id="roll-number" type="text" placeholder="Enter roll number"
+                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+            </div>
+            <div class="flex items-center gap-2">
+                <label for="name" class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Name
+                </label>
+                <input id="name" type="text" placeholder="Enter name"
+                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+            </div>
+            <div class="flex items-center gap-2">
+                <label for="ug" class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    UG
+                </label>
+                <select id="ug"
+                    class="block w-40 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                    <option value="" selected="">
+                        Select UG
+                    </option>
+                    <option value="1">UG 1</option>
+                    <option value="2">UG 2</option>
+                    <option value="3">UG 3</option>
+                    <option value="4">UG 4</option>
+                </select>
+            </div>
+            <button id="filter-btn" type="button"
+                class="ml-auto inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                Filter
+            </button>
+        </div>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <thead class="bg-gray-50 dark:bg-gray-800">
+                <tr>
+                    <th scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                        Roll Number
+                    </th>
+                    <th scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                        Name
+                    </th>
+                    <th scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                        UG Year
+                    </th>
+                    <th scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="details_list" class="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-900">
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="modal-bg_root" class="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-40 hidden"></div>
+<div id="modal_root"
+    class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded shadow-lg z-50 hidden">
+    <h2 id="modal_root_head" class="text-xl font-semibold mb-4">Application Details</h2>
+    <div id="modal-content_root"></div>
+    <button id="close-modal_root"
+        class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Close</button>
+</div>
+
+
+
+<script>
+    const filterBtn = document.getElementById('filter-btn');
+    const detailsList = document.getElementById('details_list');
+    let dummyData = [
+        {
+            rollNumber: '2021001',
+            name: 'John Doe',
+            department: 'UG 2'
+        },
+        {
+            rollNumber: '2021002',
+            name: 'Jane Smith',
+            department: 'UG 1'
+        },
+        {
+            rollNumber: '2021003',
+            name: 'Alex Johnson',
+            department: 'UG 3'
+        }
+    ];
+
+    filterBtn.addEventListener('click', () => {
+        const rollNumber = document.getElementById('roll-number').value;
+        const name = document.getElementById('name').value;
+        const department = document.getElementById('ug').value;
+        console.log(rollNumber, name, department);
+        // Dummy data for students
+        const dummyData_filtered = dummyData.filter(user => {
+            return user.rollNumber.includes(rollNumber) && user.name.includes(name) && user.department.includes(department);
+        });
+        if (dummyData_filtered.length == 0) {
+            alert("No data found");
+        }
+        console.log(dummyData_filtered);
+        // Update the table with the dummy data
+        updateTable(dummyData_filtered);
+
+
+        // Make a GET request with the filter parameters
+        fetch(`/api/students?rollNumber=${rollNumber}&name=${name}&department=${department}`)
+            .then(response => response.json())
+            .then(data => {
+                // Update the table with the fetched data
+                updateTable(data);
+                dummyData = data;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+
+    });
+
+    function updateTable(data) {
+        // Clear the existing table rows
+        detailsList.innerHTML = '';
+
+        // Create new table rows for each user
+        data.forEach(user => {
+            const row = document.createElement('tr');
+            row.classList.add('border-b', 'hover:bg-muted/50', 'data-[state=selected]:bg-muted_root');
+            row.setAttribute('data-approve-target_root', user.rollNumber); // Assuming you have an ID for each item
+
+            // Populate table cells
+            row.innerHTML = `
+                <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900 dark:text-gray-100">${user.rollNumber}</td>
+                <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900 dark:text-gray-100">${user.name}</td>
+                <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900 dark:text-gray-100">${user.department}</td>
+                <td class="p-4 align-middle">
+                    <button>
+                    <a class="inline-flex items-center rounded-md border border-transparent bg-indigo-100 px-3 py-2 text-sm font-medium text-indigo-700 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-indigo-800 dark:text-indigo-200 dark:hover:bg-indigo-700" data-modal-target_root="modal${user.rollNumber}">Show Details</a>
+                    </button>
+                    <button>
+                    <a class="inline-flex items-center rounded-md border border-transparent bg-indigo-100 px-3 py-2 text-sm font-medium text-indigo-700 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-indigo-800 dark:text-indigo-200 dark:hover:bg-indigo-700" data-modal-target_root_edit="modal${user.rollNumber}">Edit Details</a>
+                    </button>
+                </td>
+
+            `;
+            detailsList.appendChild(row);
+
+        });
+        showDetailsButtons_root = document.querySelectorAll('[data-modal-target_root^="modal"]');
+        EditDetailsButtons_root = document.querySelectorAll('[data-modal-target_root_edit^="modal"]');
+
+        showModal_root_fun();
+    }
+
+    const closeModal_root = document.getElementById('close-modal_root');
+
+    // Show modal function
+    function showModal_root_view(content, feat) {
+        const modalBg_root = document.getElementById('modal-bg_root');
+        const modal_root = document.getElementById('modal_root');
+        const modalContent_root = document.getElementById('modal-content_root');
+        const modal_head = document.getElementById("modal_root_head")
+        modal_head.innerHTML = feat;
+        modalContent_root.innerHTML = content;
+        modalBg_root.classList.remove('hidden');
+        modal_root.classList.remove('hidden');
+    }
+
+    // Hide modal function
+    function hideModal_root() {
+        const modalBg_root = document.getElementById('modal-bg_root');
+        const modal_root = document.getElementById('modal_root');
+        modalBg_root.classList.add('hidden');
+        modal_root.classList.add('hidden');
+    }
+
+    // Add event listener to each Show Details button
+    let showDetailsButtons_root = document.querySelectorAll('[data-modal-target_root^="modal"]');
+    let EditDetailsButtons_root = document.querySelectorAll('[data-modal-target_root_edit^="modal"]');
+    function showModal_root_fun() {
+        showDetailsButtons_root.forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default anchor tag behavior
+                const targetModalId = event.target.getAttribute('data-modal-target_root');
+                const id = targetModalId.replace('modal', ''); // Extract the ID from the modal target
+                const item = dummyData.find(item => item.rollNumber == id);
+                const detailsHtml = `
+                    <p><strong>Student Name:</strong> ${item.name}</p>
+                    <p><strong>Roll Number:</strong> ${item.rollNumber}</p>
+                    <p><strong>UG Year:</strong> ${item.department}</p>
+                `;
+                const feat = "View Details";
+                showModal_root_view(detailsHtml, feat);
+            });
+        });
+        EditDetailsButtons_root.forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default anchor tag behavior
+                const targetModalId = event.target.getAttribute('data-modal-target_root_edit');
+                const id = targetModalId.replace('modal', ''); // Extract the ID from the modal target
+                const item = dummyData.find(item => item.rollNumber == id);
+                const editHtml = `
+                    <form>
+                        <div class="flex flex-col gap-2">
+                            <label for="edit-name" class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Name
+                            </label>
+                            <input id="edit-name" type="text" placeholder="Enter name"
+                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" value="${item.name}" />
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="edit-ug" class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                UG
+                            </label>
+                            <select id="edit-ug"
+                                class="block w-40 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                <option value="UG 1" ${item.department === 'UG 1' ? 'selected' : ''}>UG 1</option>
+                                <option value="UG 2" ${item.department === 'UG 2' ? 'selected' : ''}>UG 2</option>
+                                <option value="UG 3" ${item.department === 'UG 3' ? 'selected' : ''}>UG 3</option>
+                                <option value="UG 4" ${item.department === 'UG 4' ? 'selected' : ''}>UG 4</option>
+                            </select>
+                        </div>
+                        <button id="save-btn" type="button"
+                            class="mt-4 inline-flex items-center rounded-md border border-transparent bg-green-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                            Save
+                        </button>
+                    </form>
+                `;
+                const feat = "Edit Details";
+                showModal_root_view(editHtml, feat);
+                const saveBtn = document.getElementById('save-btn');
+                saveBtn.addEventListener('click', () => {
+                    const editedName = document.getElementById('edit-name').value;
+                    const editedDepartment = document.getElementById('edit-ug').value;
+                    item.name = editedName;
+                    item.department = editedDepartment;
+                    updateTable(dummyData);
+                    hideModal_root();
+                    alert("data updated successfully !");
+                });
+            });
+        });
+    }
+
+
+    const modalBg_root = document.getElementById('modal-bg_root');
+
+    // Close modal when close button is clicked
+    closeModal_root.addEventListener('click', hideModal_root);
+
+    // Close modal when background is clicked
+    modalBg_root.addEventListener('click', hideModal_root);
+</script>
