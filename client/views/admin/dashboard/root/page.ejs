@@ -1,0 +1,93 @@
+<div class=" top-0 right-0 w-full h-full bg-gray-200 dark:bg-gray-900 " >
+    <!--Tabs navigation-->
+    <div>
+    <ul
+      class="mb-5 flex list-none flex-row flex-wrap border-b-0 ps-0"
+      role="tablist"
+      data-twe-nav-ref>
+      <li  class="flex-auto text-center">
+        <a
+          class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[twe-nav-active]:border-primary data-[twe-nav-active]:text-primary dark:text-white/50 dark:hover:bg-neutral-700/60 dark:data-[twe-nav-active]:text-primary"
+          data-twe-toggle="pill"
+          data-twe-target="#tabs-home01"
+          data-twe-nav-active
+          role="tab"
+          aria-controls="tabs-home01"
+          aria-selected="true"
+          >Student Sheet</a
+        >
+      </li>
+      <li class="flex-auto text-center">
+        <a
+          class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[twe-nav-active]:border-primary data-[twe-nav-active]:text-primary dark:text-white/50 dark:hover:bg-neutral-700/60 dark:data-[twe-nav-active]:text-primary"
+          data-twe-toggle="pill"
+          data-twe-target="#tabs-profile01"
+          role="tab"
+          aria-controls="tabs-profile01"
+          aria-selected="false"
+          >Attendance Analysis</a
+        >
+      </li>
+      <li  class="flex-auto text-center">
+        <a
+    
+          class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[twe-nav-active]:border-primary data-[twe-nav-active]:text-primary dark:text-white/50 dark:hover:bg-neutral-700/60 dark:data-[twe-nav-active]:text-primary"
+          data-twe-toggle="pill"
+          data-twe-target="#tabs-messages01"
+          role="tab"
+          aria-controls="tabs-messages01"
+          aria-selected="false"
+          >Student List *</a
+        >
+      </li>
+      <li  class="flex-auto text-center">
+        <a
+    
+          class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[twe-nav-active]:border-primary data-[twe-nav-active]:text-primary dark:text-white/50 dark:hover:bg-neutral-700/60 dark:data-[twe-nav-active]:text-primary"
+          data-twe-toggle="pill"
+          data-twe-target="#tabs-messages02"
+          role="tab"
+          aria-controls="tabs-messages01"
+          aria-selected="false"
+          >Student List *</a
+        >
+      </li>
+    
+    </ul>
+    </div>
+    
+    <!--Tabs content-->
+    <div class="mb-6">
+      <div
+        class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[twe-tab-active]:block"
+        id="tabs-home01"
+        role="tabpanel"
+        aria-labelledby="tabs-home-tab01"
+        data-twe-tab-active>
+        <%- include('sheet') %>
+      </div>
+      <div
+        class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[twe-tab-active]:block"
+        id="tabs-profile01"
+        role="tabpanel"
+        aria-labelledby="tabs-profile-tab01">
+        Tab 2 content
+      </div>
+      <div
+        class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[twe-tab-active]:block"
+        id="tabs-messages01"
+        role="tabpanel"
+        aria-labelledby="tabs-profile-tab01">
+        Tab 3 content
+      </div>
+      <div
+        class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[twe-tab-active]:block"
+        id="tabs-messages02"
+        role="tabpanel"
+        aria-labelledby="tabs-profile-tab01">
+        Tab 4 content
+      </div>
+      
+    </div>
+    </div>
+    
