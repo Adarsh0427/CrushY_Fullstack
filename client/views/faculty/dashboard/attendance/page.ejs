@@ -1,4 +1,46 @@
 <div class=" top-0 right-0 w-full h-full bg-gray-200 dark:bg-gray-900 " >
+  <div class="container">
+    <div class="dropdown" data-dropdown-index="0">
+      <button class="dropdown-toggle">
+        UnderGrade <span class="dropdown-arrow">&#9660;</span> 
+      </button>
+      <div class="dropdown-menu">
+        <a href="#" class="dropdown-item" data-value="option1">UG1</a>
+        <a href="#" class="dropdown-item" data-value="option2">UG2</a>
+        <a href="#" class="dropdown-item" data-value="option3">UG3</a>
+        <a href="#" class="dropdown-item" data-value="option3">UG4</a>
+      </div>
+    </div>
+
+    <div class="dropdown" data-dropdown-index="1">
+      <button class="dropdown-toggle">
+        Course <span class="dropdown-arrow">&#9660;</span> 
+      </button>
+      <div class="dropdown-menu">
+        <a href="#" class="dropdown-item" data-value="option1">Option 1</a>
+        <a href="#" class="dropdown-item" data-value="option2">Option 2</a>
+        <a href="#" class="dropdown-item" data-value="option3">Option 3</a>
+      </div>
+    </div>
+
+    <div class="dropdown" data-dropdown-index="2">
+      <button class="dropdown-toggle">
+        Section <span class="dropdown-arrow">&#9660;</span> 
+      </button>
+      <div class="dropdown-menu">
+        <a href="#" class="dropdown-item" data-value="option1">section 1</a>
+        <a href="#" class="dropdown-item" data-value="option2">section 2</a>
+        <a href="#" class="dropdown-item" data-value="option3">section 3</a>
+      </div>
+    </div> 
+
+    <div>
+    <button class="submitBtn">
+      Submit
+      <svg fill="white" viewBox="0 0 448 512" height="1em" class="arrow"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path></svg>
+    </button>
+    </div>
+  </div>
 <!--Tabs navigation-->
 <div>
 <ul
@@ -28,31 +70,6 @@
       >Attendance Analysis</a
     >
   </li>
-  <li  class="flex-auto text-center">
-    <a
-
-      class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[twe-nav-active]:border-primary data-[twe-nav-active]:text-primary dark:text-white/50 dark:hover:bg-neutral-700/60 dark:data-[twe-nav-active]:text-primary"
-      data-twe-toggle="pill"
-      data-twe-target="#tabs-messages01"
-      role="tab"
-      aria-controls="tabs-messages01"
-      aria-selected="false"
-      >Student List *</a
-    >
-  </li>
-  <li  class="flex-auto text-center">
-    <a
-
-      class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[twe-nav-active]:border-primary data-[twe-nav-active]:text-primary dark:text-white/50 dark:hover:bg-neutral-700/60 dark:data-[twe-nav-active]:text-primary"
-      data-twe-toggle="pill"
-      data-twe-target="#tabs-messages02"
-      role="tab"
-      aria-controls="tabs-messages01"
-      aria-selected="false"
-      >Student List *</a
-    >
-  </li>
-
 </ul>
 </div>
 
@@ -73,18 +90,6 @@
     aria-labelledby="tabs-profile-tab01">
     <%- include('analysis') %>
   </div>
-  <div
-    class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[twe-tab-active]:block"
-    id="tabs-messages01"
-    role="tabpanel"
-    aria-labelledby="tabs-profile-tab01">
-    <%- include('list') %>
-  </div>
-  <div
-    class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[twe-tab-active]:block"
-    id="tabs-messages02"
-    role="tabpanel"
-    aria-labelledby="tabs-profile-tab01">
-    <%- include('list_1') %>
-  </div>
 </div>
+</div>
+<script src="/javascript/fac_attend.js"></script>
